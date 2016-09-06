@@ -132,8 +132,21 @@ class DeviceTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("relayTableSegue", sender: self)
+        
+        let index = self.tableView.indexPathForSelectedRow
+        let indexNumber = index?.row
+        
+        var deviceSelect = self.deviceList[indexNumber!]
 
+        if (deviceSelect.deviceStat == true) {
+            self.performSegueWithIdentifier("relayTableSegue", sender: self)
+        }
+        else {
+            let alert = UIAlertController(title: "Error", message: "Please connect your device to view relay status", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -146,12 +159,12 @@ class DeviceTableViewController: UITableViewController {
         photonDevice = photonDeviceList[indexNumber!]
         
         var deviceSelect = self.deviceList[indexNumber!]
-        
-        
+
         vc.title = "Device: " + deviceSelect.deviceName
         vc.photonDevice = photonDevice
         
         //vc.deviceID = deviceSelect.deviceID
         
     }
+    
 }
