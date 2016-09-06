@@ -12,7 +12,37 @@
 		6A04B19B1D6F8C5C000AFDC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A04B1991D6F8C5C000AFDC2 /* Main.storyboard */; };
 		6A04B19D1D6F8C5C000AFDC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A04B19C1D6F8C5C000AFDC2 /* Assets.xcassets */; };
 		6A04B1A01D6F8C5C000AFDC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A04B19E1D6F8C5C000AFDC2 /* LaunchScreen.storyboard */; };
+		6A04B1AA1D6F9E2F000AFDC2 /* DeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A04B1A91D6F9E2F000AFDC2 /* DeviceTableViewCell.swift */; };
+		6A04B1AE1D6FA6ED000AFDC2 /* DeviceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A04B1AD1D6FA6ED000AFDC2 /* DeviceTableViewController.swift */; };
+		6A04B1B01D6FAFF6000AFDC2 /* Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A04B1AF1D6FAFF6000AFDC2 /* Devices.swift */; };
+		6AD5CC601D73A2890058557E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A04B1A11D6F8C5C000AFDC2 /* Info.plist */; };
+		6ADB668C1D737AFE0061BC3E /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ADB668A1D737AFE0061BC3E /* AFNetworking.framework */; };
+		6ADB668D1D737AFE0061BC3E /* ParticleSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ADB668B1D737AFE0061BC3E /* ParticleSDK.framework */; };
+		6ADB668E1D737C4C0061BC3E /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ADB668A1D737AFE0061BC3E /* AFNetworking.framework */; };
+		6ADB668F1D737C4C0061BC3E /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6ADB668A1D737AFE0061BC3E /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6ADB66901D737C4C0061BC3E /* ParticleSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ADB668B1D737AFE0061BC3E /* ParticleSDK.framework */; };
+		6ADB66911D737C4C0061BC3E /* ParticleSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6ADB668B1D737AFE0061BC3E /* ParticleSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6AEC183C1D73A4600066AB30 /* Exo-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6AD5CC5E1D73A17D0058557E /* Exo-Light.otf */; };
+		6AEC183D1D73A4600066AB30 /* Exo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6AD5CC5F1D73A1850058557E /* Exo-Regular.otf */; };
+		6AEC18411D73BCF50066AB30 /* RelayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC18401D73BCF50066AB30 /* RelayTableViewCell.swift */; };
+		6AEC18431D73BD200066AB30 /* RelayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC18421D73BD200066AB30 /* RelayTableViewController.swift */; };
+		6AEC18451D73C4C60066AB30 /* Relays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC18441D73C4C60066AB30 /* Relays.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6ADB66921D737C4C0061BC3E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6ADB668F1D737C4C0061BC3E /* AFNetworking.framework in Embed Frameworks */,
+				6ADB66911D737C4C0061BC3E /* ParticleSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6A04B1921D6F8C5C000AFDC2 /* ProjForSam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjForSam.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,6 +52,16 @@
 		6A04B19C1D6F8C5C000AFDC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A04B19F1D6F8C5C000AFDC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6A04B1A11D6F8C5C000AFDC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A04B1A91D6F9E2F000AFDC2 /* DeviceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceTableViewCell.swift; sourceTree = "<group>"; };
+		6A04B1AD1D6FA6ED000AFDC2 /* DeviceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceTableViewController.swift; sourceTree = "<group>"; };
+		6A04B1AF1D6FAFF6000AFDC2 /* Devices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Devices.swift; sourceTree = "<group>"; };
+		6AD5CC5E1D73A17D0058557E /* Exo-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-Light.otf"; sourceTree = "<group>"; };
+		6AD5CC5F1D73A1850058557E /* Exo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-Regular.otf"; sourceTree = "<group>"; };
+		6ADB668A1D737AFE0061BC3E /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = SOURCE_ROOT; };
+		6ADB668B1D737AFE0061BC3E /* ParticleSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParticleSDK.framework; path = Carthage/Build/iOS/ParticleSDK.framework; sourceTree = SOURCE_ROOT; };
+		6AEC18401D73BCF50066AB30 /* RelayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelayTableViewCell.swift; sourceTree = "<group>"; };
+		6AEC18421D73BD200066AB30 /* RelayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RelayTableViewController.swift; path = ../RelayTableViewController.swift; sourceTree = "<group>"; };
+		6AEC18441D73C4C60066AB30 /* Relays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Relays.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +69,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ADB668C1D737AFE0061BC3E /* AFNetworking.framework in Frameworks */,
+				6ADB668E1D737C4C0061BC3E /* AFNetworking.framework in Frameworks */,
+				6ADB668D1D737AFE0061BC3E /* ParticleSDK.framework in Frameworks */,
+				6ADB66901D737C4C0061BC3E /* ParticleSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,12 +98,22 @@
 		6A04B1941D6F8C5C000AFDC2 /* ProjForSam */ = {
 			isa = PBXGroup;
 			children = (
+				6ADB668A1D737AFE0061BC3E /* AFNetworking.framework */,
+				6ADB668B1D737AFE0061BC3E /* ParticleSDK.framework */,
+				6A04B1991D6F8C5C000AFDC2 /* Main.storyboard */,
 				6A04B1951D6F8C5C000AFDC2 /* AppDelegate.swift */,
 				6A04B1971D6F8C5C000AFDC2 /* ViewController.swift */,
-				6A04B1991D6F8C5C000AFDC2 /* Main.storyboard */,
+				6AEC18401D73BCF50066AB30 /* RelayTableViewCell.swift */,
+				6AEC18421D73BD200066AB30 /* RelayTableViewController.swift */,
+				6A04B1A91D6F9E2F000AFDC2 /* DeviceTableViewCell.swift */,
+				6A04B1AD1D6FA6ED000AFDC2 /* DeviceTableViewController.swift */,
+				6A04B1AF1D6FAFF6000AFDC2 /* Devices.swift */,
+				6AEC18441D73C4C60066AB30 /* Relays.swift */,
+				6AD5CC5F1D73A1850058557E /* Exo-Regular.otf */,
 				6A04B19C1D6F8C5C000AFDC2 /* Assets.xcassets */,
-				6A04B19E1D6F8C5C000AFDC2 /* LaunchScreen.storyboard */,
+				6AD5CC5E1D73A17D0058557E /* Exo-Light.otf */,
 				6A04B1A11D6F8C5C000AFDC2 /* Info.plist */,
+				6A04B19E1D6F8C5C000AFDC2 /* LaunchScreen.storyboard */,
 			);
 			path = ProjForSam;
 			sourceTree = "<group>";
@@ -74,6 +128,7 @@
 				6A04B18E1D6F8C5C000AFDC2 /* Sources */,
 				6A04B18F1D6F8C5C000AFDC2 /* Frameworks */,
 				6A04B1901D6F8C5C000AFDC2 /* Resources */,
+				6ADB66921D737C4C0061BC3E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,6 +178,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AEC183C1D73A4600066AB30 /* Exo-Light.otf in Resources */,
+				6AEC183D1D73A4600066AB30 /* Exo-Regular.otf in Resources */,
+				6AD5CC601D73A2890058557E /* Info.plist in Resources */,
 				6A04B1A01D6F8C5C000AFDC2 /* LaunchScreen.storyboard in Resources */,
 				6A04B19D1D6F8C5C000AFDC2 /* Assets.xcassets in Resources */,
 				6A04B19B1D6F8C5C000AFDC2 /* Main.storyboard in Resources */,
@@ -137,7 +195,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A04B1981D6F8C5C000AFDC2 /* ViewController.swift in Sources */,
+				6A04B1AA1D6F9E2F000AFDC2 /* DeviceTableViewCell.swift in Sources */,
+				6AEC18411D73BCF50066AB30 /* RelayTableViewCell.swift in Sources */,
+				6A04B1B01D6FAFF6000AFDC2 /* Devices.swift in Sources */,
+				6AEC18431D73BD200066AB30 /* RelayTableViewController.swift in Sources */,
 				6A04B1961D6F8C5C000AFDC2 /* AppDelegate.swift in Sources */,
+				6A04B1AE1D6FA6ED000AFDC2 /* DeviceTableViewController.swift in Sources */,
+				6AEC18451D73C4C60066AB30 /* Relays.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +314,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ProjForSam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.soorinpark.ProjForSam;
@@ -261,6 +329,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ProjForSam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.soorinpark.ProjForSam;
@@ -287,6 +359,7 @@
 				6A04B1A61D6F8C5C000AFDC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

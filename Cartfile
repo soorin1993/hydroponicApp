@@ -1,0 +1,3 @@
+github "spark/spark-sdk-ios" "master"
+github "Alamofire/Alamofire" ~> 3.4
+

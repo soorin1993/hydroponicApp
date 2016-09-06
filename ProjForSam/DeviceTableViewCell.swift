@@ -9,13 +9,19 @@
 import Foundation
 import UIKit
 
-class TableViewCell: UITableViewCell {
+class DeviceTableViewCell: UITableViewCell {
     
-    // MARK: Properties
-    @IBOutlet weak var id: UILabel!
-    @IBOutlet weak var status: UILabel!
-    @IBOutlet weak var value: UILabel!
-    @IBOutlet weak var location: UILabel!
+    @IBOutlet weak var cell_imageView: UIImageView!
+    
+    @IBOutlet weak var cell_deviceID_label: UILabel!
+    @IBOutlet weak var cell_deviceStat_label: UILabel!
+    @IBOutlet weak var cell_deviceVal_label: UILabel!
+    @IBOutlet weak var cell_deviceLoc_label: UILabel!
+    
+    @IBOutlet weak var cell_deviceID: UILabel!
+    @IBOutlet weak var cell_deviceStat: UILabel!
+    @IBOutlet weak var cell_deviceVal: UILabel!
+    @IBOutlet weak var cell_deviceLoc: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -10,6 +10,14 @@ import UIKit
 
 class RelayTableViewCell: UITableViewCell {
 
+    // MARK: Properties
+    
+    @IBOutlet weak var cell_relayImg: UIImageView!
+    @IBOutlet weak var cell_relayNum: UILabel!
+    @IBOutlet weak var cell_relayStat: UILabel!
+    @IBOutlet weak var cell_relayFunc: UILabel!
+    
+    @IBOutlet weak var relayImg: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
