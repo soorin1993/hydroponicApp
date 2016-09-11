@@ -20,6 +20,8 @@ class DeviceTableViewController: UITableViewController {
     var deviceList = [Devices]()
     var photonDeviceList: [SparkDevice] = []
     var photonDevice: SparkDevice?
+    var timer1: NSTimer?
+    var timer2: NSTimer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +32,11 @@ class DeviceTableViewController: UITableViewController {
         self.tableView.reloadData()
         
         if (counter == 0) {
-            _ = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(DeviceTableViewController.update), userInfo: nil, repeats: true)
+            timer1 = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(DeviceTableViewController.update), userInfo: nil, repeats: true)
             counter += 1
         }
         
-        _ = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: #selector(DeviceTableViewController.autoUpdate), userInfo: nil, repeats: true)
+        timer2 = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: #selector(DeviceTableViewController.autoUpdate), userInfo: nil, repeats: true)
 
         loadDevices()
         self.refreshControl?.addTarget(self, action: #selector(DeviceTableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
@@ -151,20 +153,19 @@ class DeviceTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
+        timer1!.invalidate()
+        timer2!.invalidate()
         
         let index = self.tableView.indexPathForSelectedRow
         let indexNumber = index?.row
-        let vc = segue.destinationViewController as! RelayTableViewController
+        let relayViewController = segue.destinationViewController as! RelayTableViewController
         
         photonDevice = photonDeviceList[indexNumber!]
         
         var deviceSelect = self.deviceList[indexNumber!]
 
-        vc.title = "Device: " + deviceSelect.deviceName
-        vc.photonDevice = photonDevice
-        
-        //vc.deviceID = deviceSelect.deviceID
+        relayViewController.title = "Device: " + deviceSelect.deviceName
+        relayViewController.photonDevice = photonDevice
         
     }
-    
 }

@@ -67,8 +67,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         }
         
-        print(particleUserName)
-        print(particlePassword)
+        //print(particleUserName)
+        //print(particlePassword)
         
         SparkCloud.sharedInstance().loginWithUser(particleUserName, password: particlePassword) { (error:NSError?) -> Void in
             if error != nil {

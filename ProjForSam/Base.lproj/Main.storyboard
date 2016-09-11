@@ -312,8 +312,8 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="function" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wde-I8-3jh">
-                                            <rect key="frame" x="191" y="76.5" width="51" height="19.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="function" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wde-I8-3jh">
+                                            <rect key="frame" x="191" y="77" width="51" height="20"/>
                                             <fontDescription key="fontDescription" name="Exo-Regular" family="Exo" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -330,18 +330,25 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Function:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXN-By-FTe">
-                                            <rect key="frame" x="121" y="76.5" width="62" height="19.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Function:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXN-By-FTe">
+                                            <rect key="frame" x="121" y="77" width="62" height="20"/>
                                             <fontDescription key="fontDescription" name="Exo-Regular" family="Exo" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aJV-VU-Uhe">
+                                            <rect key="frame" x="543" y="44" width="51" height="31"/>
+                                            <connections>
+                                                <action selector="switchChanged:" destination="Pr4-eo-oi0" eventType="valueChanged" id="f8q-yd-21y"/>
+                                            </connections>
+                                        </switch>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="xdh-ES-2Th" firstAttribute="top" secondItem="avo-2y-nRI" secondAttribute="bottom" constant="8" symbolic="YES" id="0cg-aC-4VD"/>
                                         <constraint firstItem="Yq0-Dm-IQS" firstAttribute="leading" secondItem="Low-KW-Qz8" secondAttribute="trailing" constant="26" id="0fe-jV-waU"/>
                                         <constraint firstItem="avo-2y-nRI" firstAttribute="leading" secondItem="xdh-ES-2Th" secondAttribute="leading" id="1p7-eT-lkN"/>
                                         <constraint firstItem="Low-KW-Qz8" firstAttribute="leading" secondItem="dwh-KJ-fke" secondAttribute="leadingMargin" constant="5" id="2ti-Z5-u2G"/>
+                                        <constraint firstItem="aJV-VU-Uhe" firstAttribute="centerY" secondItem="xdh-ES-2Th" secondAttribute="centerY" id="9TT-IW-o3G"/>
                                         <constraint firstItem="Wde-I8-3jh" firstAttribute="top" secondItem="xdh-ES-2Th" secondAttribute="bottom" constant="8" symbolic="YES" id="A5X-DV-CSB"/>
                                         <constraint firstItem="VUi-wK-CIQ" firstAttribute="leading" secondItem="Low-KW-Qz8" secondAttribute="trailing" constant="14" id="BMD-tR-E7D"/>
                                         <constraint firstItem="VUi-wK-CIQ" firstAttribute="trailing" secondItem="Yq0-Dm-IQS" secondAttribute="trailing" id="BfH-ae-fod"/>
@@ -357,6 +364,7 @@
                                         <constraint firstItem="Yq0-Dm-IQS" firstAttribute="top" secondItem="VUi-wK-CIQ" secondAttribute="bottom" constant="7" id="XuG-Is-ukU"/>
                                         <constraint firstItem="avo-2y-nRI" firstAttribute="leading" secondItem="VUi-wK-CIQ" secondAttribute="trailing" constant="8" id="k8Q-8s-dvM"/>
                                         <constraint firstItem="Yq0-Dm-IQS" firstAttribute="centerY" secondItem="dwh-KJ-fke" secondAttribute="centerY" id="ljl-i4-wnh"/>
+                                        <constraint firstItem="aJV-VU-Uhe" firstAttribute="trailing" secondItem="dwh-KJ-fke" secondAttribute="trailingMargin" id="qyX-8x-nDu"/>
                                         <constraint firstItem="aXN-By-FTe" firstAttribute="firstBaseline" secondItem="Wde-I8-3jh" secondAttribute="firstBaseline" id="ucT-n5-AQh"/>
                                         <constraint firstItem="Low-KW-Qz8" firstAttribute="centerY" secondItem="dwh-KJ-fke" secondAttribute="centerY" id="w7x-pM-hQN"/>
                                     </constraints>
@@ -366,6 +374,7 @@
                                     <outlet property="cell_relayImg" destination="dwh-KJ-fke" id="c3S-ck-S8i"/>
                                     <outlet property="cell_relayNum" destination="avo-2y-nRI" id="6qI-YH-c6u"/>
                                     <outlet property="cell_relayStat" destination="xdh-ES-2Th" id="CwU-tU-qPU"/>
+                                    <outlet property="cell_relaySwitch" destination="aJV-VU-Uhe" id="Qlk-2F-Mt5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -378,6 +387,9 @@
                     <navigationItem key="navigationItem" title="Relays" id="vL0-1l-9gm">
                         <barButtonItem key="backBarButtonItem" title="Relays" id="BTJ-c9-Q0z"/>
                     </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="S1D-rR-8zY">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rwa-km-rXE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

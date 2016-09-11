@@ -11,12 +11,12 @@ import UIKit
 class Relays {
     
     // MARK: Properties
-    var relayNum: Int
+    var relayNum: String
     var relayStat: String
     var relayFunc: String
     
     // MARK: Initialization
-    init?(relayNum: Int, relayStat: String, relayFunc: String) {
+    init?(relayNum: String, relayStat: String, relayFunc: String) {
         // Initialize stored properties.
         self.relayNum = relayNum
         self.relayStat = relayStat
