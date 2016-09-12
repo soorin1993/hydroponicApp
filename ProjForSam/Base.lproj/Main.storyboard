@@ -339,7 +339,7 @@
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aJV-VU-Uhe">
                                             <rect key="frame" x="543" y="44" width="51" height="31"/>
                                             <connections>
-                                                <action selector="switchChanged:" destination="Pr4-eo-oi0" eventType="valueChanged" id="f8q-yd-21y"/>
+                                                <action selector="relaySwithChange:" destination="Ies-lY-bcX" eventType="valueChanged" id="HVd-wT-aGE"/>
                                             </connections>
                                         </switch>
                                     </subviews>
@@ -371,7 +371,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="cell_relayFunc" destination="Wde-I8-3jh" id="cNr-FA-PSw"/>
-                                    <outlet property="cell_relayImg" destination="dwh-KJ-fke" id="c3S-ck-S8i"/>
+                                    <outlet property="cell_relayImg" destination="Low-KW-Qz8" id="Wf9-mq-WYj"/>
                                     <outlet property="cell_relayNum" destination="avo-2y-nRI" id="6qI-YH-c6u"/>
                                     <outlet property="cell_relayStat" destination="xdh-ES-2Th" id="CwU-tU-qPU"/>
                                     <outlet property="cell_relaySwitch" destination="aJV-VU-Uhe" id="Qlk-2F-Mt5"/>

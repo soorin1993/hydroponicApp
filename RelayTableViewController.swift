@@ -9,18 +9,14 @@
 import UIKit
 import ParticleSDK
 
-protocol SettingCellDelegate : class {
-    func switchChangeAction(sender: RelayTableViewCell, isOn: Bool)
-}
-
-class RelayTableViewController: UITableViewController, SettingCellDelegate {
+class RelayTableViewController: UITableViewController {
     
     var relayList = [Relays]()
     var photonDevice: SparkDevice?
     var counter = 0
     var timer1: NSTimer?
     var timer2: NSTimer?
-        
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -122,77 +118,41 @@ class RelayTableViewController: UITableViewController, SettingCellDelegate {
         let cellIdentifier = "RelayTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! RelayTableViewCell
         
-        // Fetches the appropriate meal for the data source layout.
         let relayItem = relayList[indexPath.row]
 
         relayList.sortInPlace({ $0.relayNum < $1.relayNum })
 
-        
-        
         cell.cell_relayNum.text = relayItem.relayNum
         cell.cell_relayStat.text = relayItem.relayStat
         cell.cell_relayFunc.text = relayItem.relayFunc
-        
-        /*
-        if relayItem.relayStat == "OFF" {
-        
-            cell.cell_relayImg.image = UIImage(named: "sleeping_dog")
-        }
-        else {
-        
-            cell.cell_relayImg.image = UIImage(named: "awake_dog")
-        }*/
 
-        /*
-        cell.cell_relaySwitch.tag = indexPath.row
-        cell.cell_relaySwitch.addTarget(self, action: Selector("switchChanged:"), forControlEvents: UIControlEvents.ValueChanged)
-        */
         cell.selectionStyle = UITableViewCellSelectionStyle.Gray;
-        
-        cell.cellDelegate = self
-
-        
         return cell
-
     }
-    
-    
-    func switchChangeAction(sender: RelayTableViewCell, isOn: Bool) {
+
+    @IBAction func relaySwithChange(sender: UISwitch) {
         
-        let indexPath = self.tableView.indexPathForCell(sender)
-        let cell = tableView.dequeueReusableCellWithIdentifier("RelayTableViewCell", forIndexPath: indexPath!) as! RelayTableViewCell
-        print(indexPath)
+        let view = sender.superview!
+        let cell1 = view.superview as! RelayTableViewCell
         
-        print("HI")
-        if isOn {
+        let indexPath = tableView.indexPathForCell(cell1)
+        let cell = tableView.cellForRowAtIndexPath(indexPath!) as! RelayTableViewCell
+        
+        print(cell.cell_relayNum.text!, cell.cell_relayStat.text!)
+        
+        if cell.cell_relaySwitch.on == true {
+            print("!!")
             cell.cell_relayStat.text = "ON"
+            cell.cell_relayFunc.text = ":D"
         }
         else {
+            print("??")
             cell.cell_relayStat.text = "OFF"
         }
-    }
-/*
-    @IBAction func switchChanged(sender: UISwitch) {
-    //}
-    //func switchChanged(sender: UISwitch) {
         
-        var row = sender.tag
-        print("row", row)
+        tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
 
-        var indexPath = NSIndexPath(forRow: row, inSection: 0)
-        let cell = tableView.dequeueReusableCellWithIdentifier("RelayTableViewCell", forIndexPath: indexPath) as! RelayTableViewCell
-
-        //var cell = tableView.cellForRowAtIndexPath(indexPath) as! RelayTableViewCell
-        print("HI")
-        if sender.on {
-            cell.cell_relayStat.text = "ON"
-        }
-        else {
-            cell.cell_relayStat.text = "OFF"
-        }
+        
     }
- */
-    
-    
 
 }

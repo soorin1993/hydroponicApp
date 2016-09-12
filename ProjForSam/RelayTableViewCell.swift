@@ -13,23 +13,13 @@ class RelayTableViewCell: UITableViewCell {
 
     // MARK: Properties
     
-    @IBOutlet weak var cell_relayImg: UIImageView!
     @IBOutlet weak var cell_relayNum: UILabel!
     @IBOutlet weak var cell_relayStat: UILabel!
     @IBOutlet weak var cell_relayFunc: UILabel!
     @IBOutlet weak var cell_relaySwitch: UISwitch!
-    
-    weak var cellDelegate: SettingCellDelegate?
+    @IBOutlet weak var cell_relayImg: UIImageView!
 
     
-    @IBAction func switchChanged(sender: UISwitch) {
-        
-        self.cellDelegate?.switchChangeAction(self, isOn:cell_relaySwitch.on)
-
-    }
-    
-   
-    @IBOutlet weak var relayImg: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
