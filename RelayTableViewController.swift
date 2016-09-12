@@ -32,9 +32,9 @@ class RelayTableViewController: UITableViewController {
             counter += 1
         }
         
-        /*
-        timer2 = NSTimer.scheduledTimerWithTimeInterval(20, target: self, selector: #selector(RelayTableViewController.autoUpdate), userInfo: nil, repeats: true)
-        */
+        
+        //timer2 = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: #selector(RelayTableViewController.autoUpdate), userInfo: nil, repeats: true)
+        
         
         loadRelay()
         
@@ -125,6 +125,14 @@ class RelayTableViewController: UITableViewController {
         cell.cell_relayNum.text = relayItem.relayNum
         cell.cell_relayStat.text = relayItem.relayStat
         cell.cell_relayFunc.text = relayItem.relayFunc
+        
+        if relayItem.relayStat == "OFF" {
+            cell.cell_relaySwitch.on = false
+        }
+        else {
+        
+            cell.cell_relaySwitch.on = true
+        }
 
         cell.selectionStyle = UITableViewCellSelectionStyle.Gray;
         return cell
@@ -134,25 +142,73 @@ class RelayTableViewController: UITableViewController {
         
         let view = sender.superview!
         let cell1 = view.superview as! RelayTableViewCell
-        
         let indexPath = tableView.indexPathForCell(cell1)
         let cell = tableView.cellForRowAtIndexPath(indexPath!) as! RelayTableViewCell
-        
-        print(cell.cell_relayNum.text!, cell.cell_relayStat.text!)
+        let relayItem = relayList[indexPath!.row]
         
         if cell.cell_relaySwitch.on == true {
-            print("!!")
-            cell.cell_relayStat.text = "ON"
-            cell.cell_relayFunc.text = ":D"
+            
+            relayItem.relayStat = "..."
+
+            var relayName = String(relayItem.relayNum)
+            
+            let funcArgs = [relayName]
+            _ = photonDevice!.callFunction("set", withArguments: funcArgs) { (resultCode : NSNumber?, error : NSError?) -> Void in
+                if (error == nil) {
+                    print("Turned on ", relayName)
+                }
+            }
+            /*
+            photonDevice!.getVariable("relay"+relayName, completion: { (result:AnyObject?, error:NSError?) -> Void in
+                if error != nil {
+                    print("Failed reading from device")
+                }
+                else {
+                    if let temp = result as? Float {
+                        if (temp == 0) {
+                            relayItem.relayStat = "OFF"
+                        }
+                        else {
+                            relayItem.relayStat = "ON"
+                        }
+                    }
+                }
+            })*/
         }
         else {
-            print("??")
-            cell.cell_relayStat.text = "OFF"
-        }
-        
-        tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+            
+            relayItem.relayStat = "..."
+            
+            var relayName = String("1" + relayItem.relayNum)
+            
+            let funcArgs = [relayName]
+            var task = photonDevice!.callFunction("set", withArguments: funcArgs) { (resultCode : NSNumber?, error : NSError?) -> Void in
+                if (error == nil) {
+                    print("Turned off ", relayName)
+                }
+            }
+            /*
+            photonDevice!.getVariable("relay"+relayItem.relayNum, completion: { (result:AnyObject?, error:NSError?) -> Void in
+                if error != nil {
+                    print("Failed reading from device")
+                }
+                else {
+                    if let temp = result as? Float {
+                        if (temp == 0) {
+                            relayItem.relayStat = "OFF"
+                        }
+                        else {
+                            relayItem.relayStat = "ON"
+                        }
+                    }
+                }
+            })*/
 
-        
+        }
+        let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
+        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            self.autoUpdate()
+        })
     }
 
 }

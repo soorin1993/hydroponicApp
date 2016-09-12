@@ -18,7 +18,7 @@ class RelayTableViewCell: UITableViewCell {
     @IBOutlet weak var cell_relayFunc: UILabel!
     @IBOutlet weak var cell_relaySwitch: UISwitch!
     @IBOutlet weak var cell_relayImg: UIImageView!
-
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
