@@ -10,8 +10,8 @@ import UIKit
 import ParticleSDK
 import Foundation
 
-let username1: String = "soorin1993@gmail.com"
-let password1: String = "Leh082393"
+var loggedIn: Bool = false
+
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
@@ -20,19 +20,30 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
+    
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if loggedIn {
+        
+            SparkCloud.sharedInstance().logout()
+        }
                 
         username.layer.borderWidth = 1.0
         username.layer.borderColor = UIColor.grayColor().CGColor
         username.delegate = self
+        username.text = ""
         
         password.layer.borderWidth = 1.0
         password.layer.borderColor = UIColor.grayColor().CGColor
         password.delegate = self
+        password.text = ""
 
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,11 +64,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     func loginSetup() {
     
-        //let particleUserName: String = username.text!
-        //let particlePassword: String = password.text!
+        let particleUserName: String = username.text!
+        let particlePassword: String = password.text!
         
-        let particleUserName: String = "soorin1993@gmail.com"
-        let particlePassword: String = "Leh082393"
+        //let particleUserName: String = "soorin1993@gmail.com"
+        //let particlePassword: String = "Leh082393"
         
         if (particleUserName.isEmpty || particlePassword.isEmpty) {
         
@@ -79,6 +90,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             else {
                 print("Logged in")
+                loggedIn = true
                 self.performSegueWithIdentifier("tableView", sender: self)
                 
             }
@@ -89,6 +101,30 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         loginSetup()
         
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            if view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+            else {
+                
+            }
+        }
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            if view.frame.origin.y != 0 {
+                self.view.frame.origin.y += keyboardSize.height
+            }
+            else {
+                
+            }
+        }
     }
     
 }
