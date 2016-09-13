@@ -1,0 +1,6 @@
+{
+  "name": "HydroponicsApp",
+  "tagline": "Hydroponics System Application",
+  "body": "<h1>Hydroponics System Application</h1>\r\n<p>This app was created for a hydroponics system that utilizes the particle photon board as the MCU and four relays that the photon board controls. The basic functionality is that the app controls the relays' power on and off. currently there are four relays that have been implemented.</p>\r\n<p>In order to utilize this app, you will need 1) a functioning particle photon board with the hydroponics script running. This is a C based particle script and is separate from the Swift project that this repository contains. 2) particle photon connected correctly to a relay system. The particle store sells both the photon as well as the relay circuit, or you can build your own relay circuit. </p>\r\n<p>This application is currently in pre-release however functional. For questions, please contact Soo Park at soorin1993@gmail.com</p>\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
