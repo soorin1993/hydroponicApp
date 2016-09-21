@@ -23,6 +23,11 @@ class RelayTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        cell_relayNum.textColor = UIColor(red: 124/255, green: 124/255, blue: 124/255, alpha:1)
+        cell_relayStat.textColor = UIColor(red: 124/255, green: 124/255, blue: 124/255, alpha:1)
+        cell_relayFunc.textColor = UIColor(red: 124/255, green: 124/255, blue: 124/255, alpha:1)
+
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

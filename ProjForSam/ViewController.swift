@@ -25,27 +25,39 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         if loggedIn {
         
             SparkCloud.sharedInstance().logout()
+            print("logout")
         }
                 
         username.layer.borderWidth = 1.0
-        username.layer.borderColor = UIColor.grayColor().CGColor
+        username.layer.borderColor = UIColor(red: 188/255, green: 226/255, blue: 127/255, alpha:1).CGColor
+
         username.delegate = self
         username.text = ""
         
+        username.keyboardType = UIKeyboardType.EmailAddress
+        
         password.layer.borderWidth = 1.0
-        password.layer.borderColor = UIColor.grayColor().CGColor
+        password.layer.borderColor = UIColor(red: 188/255, green: 226/255, blue: 127/255, alpha:1).CGColor
+
         password.delegate = self
         password.text = ""
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+        /*
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+         */
         
     }
-
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        self.navigationController?.navigationBarHidden = true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -64,11 +76,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     func loginSetup() {
     
-        let particleUserName: String = username.text!
-        let particlePassword: String = password.text!
+        //let particleUserName: String = username.text!
+        //let particlePassword: String = password.text!
         
-        //let particleUserName: String = "soorin1993@gmail.com"
-        //let particlePassword: String = "Leh082393"
+        let particleUserName: String = "soorin1993@gmail.com"
+        let particlePassword: String = "Leh082393"
         
         if (particleUserName.isEmpty || particlePassword.isEmpty) {
         

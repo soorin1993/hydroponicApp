@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OpenSansSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        OpenSans.registerFonts()
+
+        UIApplication.sharedApplication().statusBarHidden = false
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        
+        //Change status bar color
+        let statusBar: UIView = UIApplication.sharedApplication().valueForKey("statusBar") as! UIView
+        if statusBar.respondsToSelector(Selector("setBackgroundColor:")) {
+            statusBar.backgroundColor = UIColor(red: 188/255, green: 226/255, blue: 127/255, alpha:1)
+        }
+        
+        // Nav bar settings
+        var navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.shadowImage = UIImage()
+        navigationBarAppearace.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationBarAppearace.backgroundColor = UIColor(red: 188/255, green: 226/255, blue: 127/255, alpha:1)
+        
+        navigationBarAppearace.tintColor = UIColor.whiteColor()
+        navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor(), NSFontAttributeName: UIFont.openSansFontOfSize(18)]
+
+        var navBarItem = UIBarButtonItem.appearance()
+        navBarItem.setTitleTextAttributes([NSFontAttributeName: UIFont.openSansFontOfSize(15)], forState: UIControlState.Normal)
+        
+        var tabBarAppearance = UITabBar.appearance()
+        tabBarAppearance.tintColor = UIColor(red: 188/255, green: 226/255, blue: 127/255, alpha:1)
+        tabBarAppearance.backgroundImage = UIImage()
+
+        var swithAppearance = UISwitch.appearance()
+        swithAppearance.onTintColor = UIColor(red: 188/255, green: 226/255, blue: 127/255, alpha:1)
+
+
+
+
+        
         return true
     }
 

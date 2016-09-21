@@ -32,14 +32,15 @@ class RelayTableViewController: UITableViewController {
             counter += 1
         }
         
-        
-        //timer2 = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: #selector(RelayTableViewController.autoUpdate), userInfo: nil, repeats: true)
-        
-        
         loadRelay()
         
         self.refreshControl?.addTarget(self, action: #selector(RelayTableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        self.navigationController?.navigationBarHidden = false
     }
     
     func update() {
@@ -115,7 +116,7 @@ class RelayTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "RelayTableViewCell"
+        let cellIdentifier = "relayTableCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! RelayTableViewCell
         
         let relayItem = relayList[indexPath.row]
@@ -128,13 +129,18 @@ class RelayTableViewController: UITableViewController {
         
         if relayItem.relayStat == "OFF" {
             cell.cell_relaySwitch.on = false
+            cell.cell_relayImg.image = UIImage(named: "off")
+
         }
         else {
         
             cell.cell_relaySwitch.on = true
+            cell.cell_relayImg.image = UIImage(named: "on")
+
         }
 
         cell.selectionStyle = UITableViewCellSelectionStyle.Gray;
+
         return cell
     }
 
@@ -158,22 +164,7 @@ class RelayTableViewController: UITableViewController {
                     print("Turned on ", relayName)
                 }
             }
-            /*
-            photonDevice!.getVariable("relay"+relayName, completion: { (result:AnyObject?, error:NSError?) -> Void in
-                if error != nil {
-                    print("Failed reading from device")
-                }
-                else {
-                    if let temp = result as? Float {
-                        if (temp == 0) {
-                            relayItem.relayStat = "OFF"
-                        }
-                        else {
-                            relayItem.relayStat = "ON"
-                        }
-                    }
-                }
-            })*/
+
         }
         else {
             
@@ -187,24 +178,7 @@ class RelayTableViewController: UITableViewController {
                     print("Turned off ", relayName)
                 }
             }
-            /*
-            photonDevice!.getVariable("relay"+relayItem.relayNum, completion: { (result:AnyObject?, error:NSError?) -> Void in
-                if error != nil {
-                    print("Failed reading from device")
-                }
-                else {
-                    if let temp = result as? Float {
-                        if (temp == 0) {
-                            relayItem.relayStat = "OFF"
-                        }
-                        else {
-                            relayItem.relayStat = "ON"
-                        }
                     }
-                }
-            })*/
-
-        }
         let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
         dispatch_after(dispatchTime, dispatch_get_main_queue(), {
             self.autoUpdate()

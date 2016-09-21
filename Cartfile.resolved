@@ -1,3 +1,4 @@
 github "AFNetworking/AFNetworking" "3.1.0"
-github "Alamofire/Alamofire" "3.4.2"
-github "spark/spark-sdk-ios" "708474a8e2324478e47b4285883b4fa99bcbb8a3"
+github "Alamofire/Alamofire" "3.5.0"
+github "hemantasapkota/OpenSansSwift" "4.0.0"
+github "spark/spark-sdk-ios" "b26a5f5eb0f57a26d077bb88edb564c8fd735ebc"
