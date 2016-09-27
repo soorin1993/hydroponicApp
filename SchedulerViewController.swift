@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OpenSansSwift
 import ParticleSDK
 import Foundation
 
@@ -14,6 +15,7 @@ class SchedulerViewController: UIViewController {
     
     
     
+    @IBOutlet weak var scheduleTitle: UILabel!
     @IBOutlet weak var relayField: UITextField!
     @IBOutlet weak var startField: UITextField!
     @IBOutlet weak var endField: UITextField!
@@ -124,6 +126,8 @@ class SchedulerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        scheduleTitle.font = UIFont.openSansFontOfSize(18)
         
     }
     
