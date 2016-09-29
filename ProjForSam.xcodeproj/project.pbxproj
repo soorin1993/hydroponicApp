@@ -19,6 +19,7 @@
 		6A4E85E71D931BD600501EC1 /* OpenSansSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4E85E51D931B7900501EC1 /* OpenSansSwift.framework */; };
 		6A4E85E81D931BD600501EC1 /* OpenSansSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4E85E51D931B7900501EC1 /* OpenSansSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6A6141981D8B74FA0015A511 /* SchedulerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6141971D8B74FA0015A511 /* SchedulerViewController.swift */; };
+		6AAF98DF1D9C894800BA059B /* SensorDeviceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAF98DE1D9C894800BA059B /* SensorDeviceTableViewController.swift */; };
 		6AD5CC601D73A2890058557E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A04B1A11D6F8C5C000AFDC2 /* Info.plist */; };
 		6ADB668C1D737AFE0061BC3E /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ADB668A1D737AFE0061BC3E /* AFNetworking.framework */; };
 		6ADB668D1D737AFE0061BC3E /* ParticleSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ADB668B1D737AFE0061BC3E /* ParticleSDK.framework */; };
@@ -62,6 +63,7 @@
 		6A4E36F51D93137B00733E4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A4E85E51D931B7900501EC1 /* OpenSansSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenSansSwift.framework; sourceTree = "<group>"; };
 		6A6141971D8B74FA0015A511 /* SchedulerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SchedulerViewController.swift; path = ../SchedulerViewController.swift; sourceTree = "<group>"; };
+		6AAF98DE1D9C894800BA059B /* SensorDeviceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorDeviceTableViewController.swift; sourceTree = "<group>"; };
 		6AD5CC5E1D73A17D0058557E /* Exo-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-Light.otf"; sourceTree = "<group>"; };
 		6AD5CC5F1D73A1850058557E /* Exo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-Regular.otf"; sourceTree = "<group>"; };
 		6ADB668A1D737AFE0061BC3E /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = SOURCE_ROOT; };
@@ -114,19 +116,28 @@
 				6A04B1951D6F8C5C000AFDC2 /* AppDelegate.swift */,
 				6A04B1971D6F8C5C000AFDC2 /* ViewController.swift */,
 				6A04B1AF1D6FAFF6000AFDC2 /* Devices.swift */,
+				6AAF98E11D9C89B900BA059B /* Relay */,
+				6AAF98DE1D9C894800BA059B /* SensorDeviceTableViewController.swift */,
+				6A04B1A11D6F8C5C000AFDC2 /* Info.plist */,
+				6A04B19E1D6F8C5C000AFDC2 /* LaunchScreen.storyboard */,
+				6A4E36F51D93137B00733E4F /* Assets.xcassets */,
+				6AD5CC5F1D73A1850058557E /* Exo-Regular.otf */,
+				6AD5CC5E1D73A17D0058557E /* Exo-Light.otf */,
+			);
+			path = ProjForSam;
+			sourceTree = "<group>";
+		};
+		6AAF98E11D9C89B900BA059B /* Relay */ = {
+			isa = PBXGroup;
+			children = (
+				6A6141971D8B74FA0015A511 /* SchedulerViewController.swift */,
 				6AEC18441D73C4C60066AB30 /* Relays.swift */,
 				6A04B1A91D6F9E2F000AFDC2 /* RelayDeviceTableViewCell.swift */,
 				6A04B1AD1D6FA6ED000AFDC2 /* RelayDeviceTableViewController.swift */,
 				6AEC18401D73BCF50066AB30 /* RelayTableViewCell.swift */,
 				6AEC18421D73BD200066AB30 /* RelayTableViewController.swift */,
-				6A6141971D8B74FA0015A511 /* SchedulerViewController.swift */,
-				6AD5CC5F1D73A1850058557E /* Exo-Regular.otf */,
-				6AD5CC5E1D73A17D0058557E /* Exo-Light.otf */,
-				6A04B1A11D6F8C5C000AFDC2 /* Info.plist */,
-				6A04B19E1D6F8C5C000AFDC2 /* LaunchScreen.storyboard */,
-				6A4E36F51D93137B00733E4F /* Assets.xcassets */,
 			);
-			path = ProjForSam;
+			name = Relay;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,7 +173,7 @@
 				TargetAttributes = {
 					6A04B1911D6F8C5C000AFDC2 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 394M32L62V;
+						DevelopmentTeam = GJ6V736FLW;
 					};
 				};
 			};
@@ -212,6 +223,7 @@
 				6A04B1B01D6FAFF6000AFDC2 /* Devices.swift in Sources */,
 				6AEC18431D73BD200066AB30 /* RelayTableViewController.swift in Sources */,
 				6A04B1961D6F8C5C000AFDC2 /* AppDelegate.swift in Sources */,
+				6AAF98DF1D9C894800BA059B /* SensorDeviceTableViewController.swift in Sources */,
 				6A04B1AE1D6FA6ED000AFDC2 /* RelayDeviceTableViewController.swift in Sources */,
 				6AEC18451D73C4C60066AB30 /* Relays.swift in Sources */,
 			);

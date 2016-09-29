@@ -76,11 +76,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     func loginSetup() {
     
-        let particleUserName: String = username.text!
-        let particlePassword: String = password.text!
+        //let particleUserName: String = username.text!
+        //let particlePassword: String = password.text!
         
-        //let particleUserName: String = "soorin1993@gmail.com"
-        //let particlePassword: String = "Leh082393"
+        let particleUserName: String = "soorin1993@gmail.com"
+        let particlePassword: String = "Leh082393"
         
         if (particleUserName.isEmpty || particlePassword.isEmpty) {
         

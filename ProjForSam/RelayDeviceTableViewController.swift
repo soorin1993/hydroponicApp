@@ -56,7 +56,6 @@ class RelayDeviceTableViewController: UITableViewController, UITabBarDelegate {
     
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         //This method will be called when user changes tab.
-        print(item.title)
         if item.title == "Logout" {
             SparkCloud.sharedInstance().logout()
             let viewController: ViewController = self.storyboard?.instantiateViewControllerWithIdentifier("VC") as! ViewController
