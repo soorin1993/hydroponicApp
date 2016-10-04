@@ -32,6 +32,9 @@ class RelayTableViewController: UITableViewController {
             counter += 1
         }
         
+        timer2 = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: #selector(RelayDeviceTableViewController.autoUpdate), userInfo: nil, repeats: true)
+
+        
         loadRelay()
         
         self.refreshControl?.addTarget(self, action: #selector(RelayTableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
@@ -87,7 +90,7 @@ class RelayTableViewController: UITableViewController {
                         }
                     }
                     var relayNum = String(index + 1)
-                    var foobar = Relays(relayNum: relayNum, relayStat: stat, relayFunc: "???")
+                    var foobar = Relays(relayNum: relayNum, relayStat: stat, relayFunc: "???", relaySensor: nil)
                     self.relayList.append(foobar!)
                 }
             })
@@ -183,6 +186,11 @@ class RelayTableViewController: UITableViewController {
         dispatch_after(dispatchTime, dispatch_get_main_queue(), {
             self.autoUpdate()
         })
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        timer1!.invalidate()
+        timer2!.invalidate()
     }
 
 }

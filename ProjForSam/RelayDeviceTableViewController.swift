@@ -16,8 +16,8 @@ class RelayDeviceTableViewController: UITableViewController, UITabBarDelegate {
     
     
     // MARK: Properties
-    var deviceList = [Devices]()
-    var photonDeviceList: [SparkDevice] = []
+    var deviceList = [Devices]() //device class object
+    var relayDeviceList: [SparkDevice] = [] //spark device listfor next view controller
     var photonDevice: SparkDevice?
     var timer1: NSTimer?
     var timer2: NSTimer?
@@ -71,9 +71,7 @@ class RelayDeviceTableViewController: UITableViewController, UITabBarDelegate {
     }
 
     func update() {
-    
         self.tableView.reloadData()
-    
     }
     
     func autoUpdate() {
@@ -101,10 +99,15 @@ class RelayDeviceTableViewController: UITableViewController, UITabBarDelegate {
             else {
                 if let devices = sparkDevices as? [SparkDevice] {
                     for device in devices {
-                        print(device)
-                        self.photonDeviceList.append(device)
-                        var temp = Devices(deviceName: device.name!, deviceStat: device.connected, deviceVal: "temp", deviceLoc: "soo casa")!
-                        self.deviceList.append(temp)
+                        
+                        if device.name!.rangeOfString("relay") != nil{
+                            
+                            print(device)
+                            self.relayDeviceList.append(device)
+                            var temp = Devices(deviceName: device.name!, deviceStat: device.connected, deviceVal: "temp", deviceLoc: "soo casa")!
+                            self.deviceList.append(temp)
+
+                        }
                     }
                 }
             }
@@ -189,7 +192,7 @@ class RelayDeviceTableViewController: UITableViewController, UITabBarDelegate {
         let indexNumber = index?.row
         let relayViewController = segue.destinationViewController as! RelayTableViewController
         
-        photonDevice = photonDeviceList[indexNumber!]
+        photonDevice = relayDeviceList[indexNumber!]
         
         var deviceSelect = self.deviceList[indexNumber!]
 
