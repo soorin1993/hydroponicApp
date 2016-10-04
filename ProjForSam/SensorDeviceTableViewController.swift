@@ -15,22 +15,22 @@ class SensorDeviceTableViewController: UITableViewController, UITabBarDelegate {
     var deviceList = [Devices]()
     var sensorDeviceList: [SparkDevice] = []
     var photonDevice: SparkDevice?
-    var timer1: NSTimer?
-    var timer2: NSTimer?
+    var timer1: Timer?
+    var timer2: Timer?
     var counter = 0
     
     
-    @IBAction func logoutButtonPressed(sender: UIBarButtonItem) {
+    @IBAction func logoutButtonPressed(_ sender: UIBarButtonItem) {
         
-        let vc = self.storyboard!.instantiateViewControllerWithIdentifier("LoginView") as! ViewController
-        self.presentViewController(vc, animated: true, completion: nil)
+        let vc = self.storyboard!.instantiateViewController(withIdentifier: "LoginView") as! ViewController
+        self.present(vc, animated: true, completion: nil)
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.multipleTouchEnabled = false;
+        self.tableView.isMultipleTouchEnabled = false;
         self.tableView.allowsSelection = true;
         
         self.tableView.separatorColor = UIColor(red: 188/255, green: 226/255, blue: 127/255, alpha:1)
@@ -39,31 +39,31 @@ class SensorDeviceTableViewController: UITableViewController, UITabBarDelegate {
         self.tableView.reloadData()
         
         if (counter == 0) {
-            timer1 = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(SensorDeviceTableViewController.update), userInfo: nil, repeats: true)
+            timer1 = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(SensorDeviceTableViewController.update), userInfo: nil, repeats: true)
             counter += 1
         }
         
-        timer2 = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: #selector(SensorDeviceTableViewController.autoUpdate), userInfo: nil, repeats: true)
+        timer2 = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(SensorDeviceTableViewController.autoUpdate), userInfo: nil, repeats: true)
         
         loadDevices()
-        self.refreshControl?.addTarget(self, action: #selector(SensorDeviceTableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(SensorDeviceTableViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
         
     }
     
-    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         //This method will be called when user changes tab.
         if item.title == "Logout" {
             SparkCloud.sharedInstance().logout()
-            let viewController: ViewController = self.storyboard?.instantiateViewControllerWithIdentifier("VC") as! ViewController
-            self.presentViewController(viewController, animated: true, completion: nil)
+            let viewController: ViewController = self.storyboard?.instantiateViewController(withIdentifier: "VC") as! ViewController
+            self.present(viewController, animated: true, completion: nil)
         }
         
     }
     
     
-    override func viewWillAppear(animated: Bool)
+    override func viewWillAppear(_ animated: Bool)
     {
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     func update() {
@@ -78,7 +78,7 @@ class SensorDeviceTableViewController: UITableViewController, UITabBarDelegate {
         self.tableView.reloadData()
     }
     
-    func handleRefresh(refreshControl: UIRefreshControl) {
+    func handleRefresh(_ refreshControl: UIRefreshControl) {
         
         loadDevices()
         self.tableView.reloadData()
@@ -89,7 +89,7 @@ class SensorDeviceTableViewController: UITableViewController, UITabBarDelegate {
         
         deviceList.removeAll()
         
-        SparkCloud.sharedInstance().getDevices { (sparkDevices:[AnyObject]?, error:NSError?) -> Void in
+        SparkCloud.sharedInstance().getDevices { (sparkDevices:[Any]?, error:Error?) -> Void in
             if error != nil {
                 print("Check your internet connectivity")
             }
@@ -98,7 +98,7 @@ class SensorDeviceTableViewController: UITableViewController, UITabBarDelegate {
                     for device in devices {
                         
                         
-                        if device.name!.rangeOfString("sensor") != nil{
+                        if device.name!.range(of: "sensor") != nil{
                             
                             print(device)
                             self.sensorDeviceList.append(device)
@@ -119,22 +119,22 @@ class SensorDeviceTableViewController: UITableViewController, UITabBarDelegate {
     }
     
     // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return deviceList.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "sensorDeviceTableCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! SensorDeviceTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SensorDeviceTableViewCell
         
         // Fetches the appropriate meal for the data source layout.
-        let deviceItem = deviceList[indexPath.row]
+        let deviceItem = deviceList[(indexPath as NSIndexPath).row]
         
         cell.cell_deviceID.text = deviceItem.deviceName
         
@@ -155,45 +155,45 @@ class SensorDeviceTableViewController: UITableViewController, UITabBarDelegate {
         cell.cell_deviceVal.text = deviceItem.deviceVal
         cell.cell_deviceLoc.text = deviceItem.deviceLoc
         
-        cell.selectionStyle = UITableViewCellSelectionStyle.Gray;
-        cell.accessoryType = .DisclosureIndicator
+        cell.selectionStyle = UITableViewCellSelectionStyle.gray;
+        cell.accessoryType = .disclosureIndicator
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let index = self.tableView.indexPathForSelectedRow
-        let indexNumber = index?.row
+        let indexNumber = (index as NSIndexPath?)?.row
         
-        var deviceSelect = self.deviceList[indexNumber!]
+        let deviceSelect = self.deviceList[indexNumber!]
         
         if (deviceSelect.deviceStat == true) {
-            self.performSegueWithIdentifier("sensorTableSegue", sender: self)
+            self.performSegue(withIdentifier: "sensorTableSegue", sender: self)
         }
         else {
-            let alert = UIAlertController(title: "Error", message: "Please connect your device to view sensor status", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: "Error", message: "Please connect your device to view sensor status", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             
         }
         
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.tableView.deselectRow(at: indexPath, animated: true)
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         timer1!.invalidate()
         timer2!.invalidate()
         
         let index = self.tableView.indexPathForSelectedRow
-        let indexNumber = index?.row
-        let sensorViewController = segue.destinationViewController as! SensorTableViewController
+        let indexNumber = (index as NSIndexPath?)?.row
+        let sensorViewController = segue.destination as! SensorTableViewController
         
         photonDevice = sensorDeviceList[indexNumber!]
         
-        var deviceSelect = self.deviceList[indexNumber!]
+        let deviceSelect = self.deviceList[indexNumber!]
         
         sensorViewController.title = "Device: " + deviceSelect.deviceName
         print("!!", photonDevice)

@@ -33,15 +33,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
                 
         username.layer.borderWidth = 1.0
-        username.layer.borderColor = UIColor(red: 188/255, green: 226/255, blue: 127/255, alpha:1).CGColor
+        username.layer.borderColor = UIColor(red: 188/255, green: 226/255, blue: 127/255, alpha:1).cgColor
 
         username.delegate = self
         username.text = ""
         
-        username.keyboardType = UIKeyboardType.EmailAddress
+        username.keyboardType = UIKeyboardType.emailAddress
         
         password.layer.borderWidth = 1.0
-        password.layer.borderColor = UIColor(red: 188/255, green: 226/255, blue: 127/255, alpha:1).CGColor
+        password.layer.borderColor = UIColor(red: 188/255, green: 226/255, blue: 127/255, alpha:1).cgColor
 
         password.delegate = self
         password.text = ""
@@ -53,21 +53,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    override func viewWillAppear(animated: Bool)
+    override func viewWillAppear(_ animated: Bool)
     {
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         view.endEditing(true)
-        super.touchesBegan(touches, withEvent: event)
+        super.touchesBegan(touches, with: event)
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard.
         textField.resignFirstResponder()
         loginSetup()
@@ -84,40 +84,40 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         if (particleUserName.isEmpty || particlePassword.isEmpty) {
         
-            let alert = UIAlertController(title: "Error", message: "Please enter your credentials for Particle", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Button", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: "Error", message: "Please enter your credentials for Particle", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Button", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         
         }
         
         //print(particleUserName)
         //print(particlePassword)
         
-        SparkCloud.sharedInstance().loginWithUser(particleUserName, password: particlePassword) { (error:NSError?) -> Void in
+        SparkCloud.sharedInstance().login(withUser: particleUserName, password: particlePassword) { (error:Error?) -> Void in
             if error != nil {
                 print("Wrong credentials or no internet connectivity, please try again")
-                let alert = UIAlertController(title: "Error", message: "Wrong credentials or no internet connectivity, please try again", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Button", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
+                let alert = UIAlertController(title: "Error", message: "Wrong credentials or no internet connectivity, please try again", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Button", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
             else {
                 print("Logged in")
                 loggedIn = true
-                self.performSegueWithIdentifier("tableView", sender: self)
+                self.performSegue(withIdentifier: "tableView", sender: self)
                 
             }
         }
     }
     
-    @IBAction func loginClick(sender: UIButton) {
+    @IBAction func loginClick(_ sender: UIButton) {
         
         loginSetup()
         
     }
     
-    func keyboardWillShow(notification: NSNotification) {
+    func keyboardWillShow(_ notification: Notification) {
         
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+        if let keyboardSize = ((notification as NSNotification).userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if view.frame.origin.y == 0{
                 self.view.frame.origin.y -= keyboardSize.height
             }
@@ -128,8 +128,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+    func keyboardWillHide(_ notification: Notification) {
+        if let keyboardSize = ((notification as NSNotification).userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if view.frame.origin.y != 0 {
                 self.view.frame.origin.y += keyboardSize.height
             }
